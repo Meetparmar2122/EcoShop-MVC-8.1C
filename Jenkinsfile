@@ -1,39 +1,29 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
-        echo "Stage 1: Build"
+        git branch: 'main', url: ' https://github.com/Meetparmar2122/EcoShop-MVC-8.1C.git'
       }
     }
-    stage('Unit & Integration Tests') {
+    stage('Install Dependencies') {
       steps {
-        echo "Stage 2: Unit & Integration Tests"
+        sh 'npm install'
       }
     }
-    stage('Code Analysis') {
+    stage('Run Tests') {
       steps {
-        echo "Stage 3: Code Analysis"
+        sh 'npm test || true'
       }
     }
-    stage('Security Scan') {
+    stage('Generate Coverage Report') {
       steps {
-        echo "Stage 4: Security Scan"
+        sh 'npm run coverage || true'
       }
     }
-    stage('Deploy to Staging') {
+    stage('NPM Audit (Security Scan)') {
       steps {
-        echo "Stage 5: Deploy to Staging"
-      }
-    }
-    stage('Integration Tests on Staging') {
-      steps {
-        echo "Stage 6: Integration Tests on Staging"
-      }
-    }
-    stage('Deploy to Production') {
-      steps {
-        echo "Stage 7: Deploy to Production"
+        sh 'npm audit || true'
       }
     }
   }
