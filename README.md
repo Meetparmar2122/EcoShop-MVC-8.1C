@@ -19,3 +19,4 @@ This version of EcoShop includes MongoDB integration via Mongoose, REST routes, 
    ```
 5. Open the demo frontend at `http://localhost:3000`
 
+##Jenkins Set up and Test success
