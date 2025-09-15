@@ -48,7 +48,7 @@ pipeline {
                 bat """
                 sonar-scanner ^
                 -Dsonar.projectKey=EcoShop-MVC-8.1C ^
-                -Dsonar.organization=MeetParmar2122 ^
+                -Dsonar.organization=meetparmar2122 ^
                 -Dsonar.sources=. ^
                 -Dsonar.host.url=https://sonarcloud.io ^
                 -Dsonar.login=%SONAR_TOKEN%
