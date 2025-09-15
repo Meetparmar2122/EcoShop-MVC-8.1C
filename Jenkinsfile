@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        // Jenkins credential ID for SonarCloud token
-        SONAR_TOKEN = credentials('SONAR_TOKEN')
+        SONAR_TOKEN = credentials('SONAR_TOKEN') // Jenkins credential for SonarCloud token
     }
 
     stages {
@@ -38,11 +37,17 @@ pipeline {
             }
         }
 
+        stage('Check SonarScanner') {
+            steps {
+                bat 'sonar-scanner -v'
+            }
+        }
+
         stage('SonarCloud Analysis') {
             steps {
                 bat """
                 sonar-scanner ^
-                -Dsonar.projectKey=MeetParmar2122_EcoShop ^
+                -Dsonar.projectKey=EcoShop-MVC-8.1C ^
                 -Dsonar.organization=MeetParmar2122 ^
                 -Dsonar.sources=. ^
                 -Dsonar.host.url=https://sonarcloud.io ^
@@ -57,7 +62,7 @@ pipeline {
             echo 'Pipeline finished successfully!'
         }
         failure {
-            echo 'Pipeline failed. Check the logs for details.'
+            echo 'Pipeline failed. Check logs for details.'
         }
     }
 }
