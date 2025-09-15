@@ -5,7 +5,10 @@
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
-    "seed": "node server/seed.js"
+    "seed": "node server/seed.js",
+    "test": "echo \"No tests defined\"",
+    "coverage": "echo \"No coverage defined\"",
+    "audit": "npm audit"
   },
   "dependencies": {
     "cors": "^2.8.5",
